@@ -173,7 +173,7 @@ class GoogleAds:
             # that's apparently the only way to get the actual protobuf message that can be serialzied
             # into json.
             # type: ignore[union-attr]
-            return json_format.MessageToJson(message._pb, indent=0).replace("\n", "")
+            return json_format.MessageToJson(message._pb, indent=0, preserving_proto_field_name=True, including_default_value_fields=True, ensure_ascii=False).replace("\n", "")
         except AttributeError:
             # This is a fallback for the cases when '_pb' attribute is not available.
             return str(message)

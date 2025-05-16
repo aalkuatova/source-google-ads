@@ -102,3 +102,17 @@ You've checked out the repo, implemented a million dollar feature, and you're re
 6. Pat yourself on the back for being an awesome contributor.
 7. Someone from Airbyte will take a look at your PR and iterate with you to merge it into master.
 8. Once your PR is merged, the new version of the connector will be automatically published to Docker Hub and our connector registry.
+
+
+
+host.docker.internal
+
+psql -h localhost -p 5433 -U airbyte -d airbyte_db
+
+psql -U airbyte -h 127.0.0.1 -p 5433 -d airbyte_db
+
+airbyte-ci connectors --name=source-google-ads build --architecture=linux/amd64 --architecture=linux/arm64 --tag 18               
+
+docker tag airbyte/source-google-ads:18-linux-amd64 aazizaa/source-google-ads:18-amd64
+
+docker push aazizaa/source-google-ads:18-amd64   
